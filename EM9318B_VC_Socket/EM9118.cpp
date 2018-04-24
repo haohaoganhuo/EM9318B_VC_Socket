@@ -2742,3 +2742,29 @@ I32 _stdcall EM9118_AdWriteFull( EM9118_DevPara* pDev, I32 chNo, I16 fullCode, I
 
 	return EM9118_SUCCESS;
 }
+
+I32 _stdcall EM9118_AdReadAllCodeOnce( EM9118_DevPara* pDev, I16 adCode[EM9118_MAXADCHCNT], I32 timeOutMS )
+{
+	if( !adCode )
+		return EM9118_FAILURE;
+
+	I32 ret = 0;
+	V_I8 vc(sizeof(I16) * EM9118_MAXADCHCNT);
+	if( pDev->isHcStart )
+		ret = ZTLC_RecvAndVerify( pDev->hCmd, 512, &vc[0], vc.size(), timeOutMS );
+	else
+		ret = ZTLC_RecvAndVerify( pDev->hCmd, 256, &vc[0], vc.size(), timeOutMS );
+	if( ret < 0 )
+		return ret;
+
+	//	MyTrace( "%2x", vc );
+	memset( adCode, 0, vc.size() );
+	I32 vcInx = 0;
+	for( I32 codeInx = 0; codeInx < EM9118_MAXADCHCNT; ++codeInx )
+	{
+		adCode[codeInx] |= vc[vcInx++] & 0xff;
+		adCode[codeInx] <<= 8;
+		adCode[codeInx] |= (U8)vc[vcInx++] & 0xff;
+	}
+	return 0;
+}

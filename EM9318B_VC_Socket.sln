@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EM9318B_VC_Socket", "EM9318B_VC_Socket\EM9318B_VC_Socket.vcproj", "{97D4677B-56D2-4174-A00A-CA73FB7ADDDC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EM9318B_VC_Dll", "..\..\aaa\EM9318B_VC_Dll\EM9318B_VC_Dll.vcproj", "{B4A7E34A-A0C2-4677-A709-1CD4A854C13F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{97D4677B-56D2-4174-A00A-CA73FB7ADDDC}.Debug|Win32.Build.0 = Debug|Win32
 		{97D4677B-56D2-4174-A00A-CA73FB7ADDDC}.Release|Win32.ActiveCfg = Release|Win32
 		{97D4677B-56D2-4174-A00A-CA73FB7ADDDC}.Release|Win32.Build.0 = Release|Win32
+		{B4A7E34A-A0C2-4677-A709-1CD4A854C13F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B4A7E34A-A0C2-4677-A709-1CD4A854C13F}.Debug|Win32.Build.0 = Debug|Win32
+		{B4A7E34A-A0C2-4677-A709-1CD4A854C13F}.Release|Win32.ActiveCfg = Release|Win32
+		{B4A7E34A-A0C2-4677-A709-1CD4A854C13F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

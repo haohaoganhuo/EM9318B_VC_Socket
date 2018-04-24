@@ -64,6 +64,7 @@ BEGIN_MESSAGE_MAP(CZT_ADDlg, CDialog)
 	ON_BN_CLICKED(IDSTARTDAQ, &CZT_ADDlg::OnBnClickedStartdaq)
 	ON_BN_CLICKED(IDSTOPDAQ, &CZT_ADDlg::OnBnClickedStopdaq)
 	ON_WM_TIMER()
+	ON_BN_CLICKED(IDREADADONCE, &CZT_ADDlg::OnBnClickedReadadonce)
 END_MESSAGE_MAP()
 
 F64 CZT_ADDlg::GetDaqFreq()
@@ -428,4 +429,41 @@ void CZT_ADDlg::OnTimer(UINT_PTR nIDEvent)
 	_lockValue.Unlock();
 
 	CDialog::OnTimer(nIDEvent);
+}
+
+void CZT_ADDlg::OnBnClickedReadadonce()
+{
+	UpdateData( TRUE );
+	I32 ret = EM9118_AdSetRange( _pF->_hDev, _adRange );
+	if( ret < 0 )
+	{
+		_pF->ShowInfo( "EM9118_AdSetRange error:%d", ret );
+		return;
+	}
+
+	V_I16 adCode(EM9118_MAXADCHCNT);
+	ret = EM9118_AdReadAllCodeOnce( _pF->_hDev, &adCode[0] );
+	if( ret < 0 )
+	{
+		_pF->ShowInfo( "EM9118_AdReadAllCodeOnce error:%d", ret );
+		return;
+	}
+
+	for( U32 i = 0; i < EM9118_MAXADCHCNT; ++i )
+	{
+		F64 adValue;
+		CString str;
+		if( _dispMode )
+		{
+			EM9118_AdChCodeToValue( _pF->_hDev, i + 1, adCode[i], &adValue );
+			str.Format( "%5.3f", adValue );
+		}
+		else
+		{
+			adValue = adCode[i];
+			str.Format( "%5.0f", adValue );
+		}
+
+		SetDlgItemText( IDC_ADDATA1 + i, str );
+	}
 }

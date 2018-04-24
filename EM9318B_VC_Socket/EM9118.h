@@ -120,6 +120,15 @@ I32 _stdcall EM9118_AdWriteZero( EM9118_DevPara* pDev, I32 chNo, I16 zeroCode, I
 I32 _stdcall EM9118_AdWriteFull( EM9118_DevPara* pDev, I32 chNo, I16 fullCode, I32 timeOutMS = EM9118_TIMOUT_MS );
 //写入AD满度，本命令一般用户使用不到
 
+I32 _stdcall EM9118_AdReadAllCodeOnce( EM9118_DevPara* pDev, I16 adCode[EM9118_MAXADCHCNT], I32 timeOutMS = EM9118_TIMOUT_MS );
+//函数功能：读取一次18个通道的AD数据。
+//入口参数：
+//           hDevice：设备句柄，EM9118_DeviceCreate函数返回值
+//出口参数：
+//            adCode：18元素有符号16位整型数组，返回18个通道的AD原码，如果实际AD通道数不足18，则只有通道数范围内的数组元素有意义。
+//                    注意：此参数必须为18元素数组。
+//返回值：0表示成功，<0表示失败
+
 I32 _stdcall EM9118_AdChGetCode( EM9118_DevPara* pDev, I32 chInx, U32 bytesCount, I8* codeBuffer, I16* adCode, U32* adCodeCount );
 //函数功能：将从缓冲区中获得指定通道的AD原码值，缓冲区数据调用EM9118_HcReadData得到
 //入口参数：

@@ -5,7 +5,7 @@
 #define IDM_ABOUTBOX                    0x0010
 #define IDD_ABOUTBOX                    100
 #define IDS_ABOUTBOX                    101
-#define IDD_EM9318B_VC_Socket_DIALOG       102
+#define IDD_EM9318B_VC_Socket_DIALOG    102
 #define IDR_MAINFRAME                   128
 #define IDD_AD                          131
 #define IDD_CT                          132
@@ -45,6 +45,7 @@
 #define IDC_SPEEDEVERAGEGC              1011
 #define IDC_SPEEDRTGC                   1012
 #define IDC_AVERAGENUM                  1013
+#define IDREADADONCE                    1015
 #define IDC_CNTSTYTLE1                  1018
 #define IDC_ADALLDATA                   1025
 #define IDC_IO1                         1028
