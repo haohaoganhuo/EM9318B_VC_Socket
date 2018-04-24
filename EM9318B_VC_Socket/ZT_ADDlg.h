@@ -67,5 +67,6 @@ public:
 	int _adAverageNumber;
 	CZCD_Lock _lockValue;
 	I32 _readTimes;
+	DWORD _triCount;
 	afx_msg void OnBnClickedReadadonce();
 };

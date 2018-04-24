@@ -45,6 +45,7 @@
 #define IDC_SPEEDEVERAGEGC              1011
 #define IDC_SPEEDRTGC                   1012
 #define IDC_AVERAGENUM                  1013
+#define IDC_TRICOUNT                    1014
 #define IDREADADONCE                    1015
 #define IDC_CNTSTYTLE1                  1018
 #define IDC_ADALLDATA                   1025

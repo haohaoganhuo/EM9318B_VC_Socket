@@ -169,7 +169,7 @@ I32 _stdcall EM9118_HcSetGroupFreq( EM9118_DevPara* pDev,  F64 groupFreq, I32 ti
 //                无
 //返回值：0表示成功，<0表示失败
 
-I32 _stdcall EM9118_HcSetTriCount( HANDLE pDev, U32 triCount, I32 timeOutMS = EM9118_TIMOUT_MS );
+I32 _stdcall EM9118_HcSetTriCount( EM9118_DevPara* pDev, U32 triCount, I32 timeOutMS = EM9118_TIMOUT_MS );
 //函数功能：设置外触发组数，此函数只有外触发且边沿触发时才有效
 //入口参数：
 //           pDev：设备句柄，EM9118_DeviceCreate函数返回值
